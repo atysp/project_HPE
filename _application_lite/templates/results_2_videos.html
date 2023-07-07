@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Résultats</title>
+    <style>
+        /* Styles CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+    
+        h2 {
+            margin-top: 20px;
+            color: #14568f;
+        }
+
+        .gif-container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 10px;
+            margin-left: 40px;
+            box-sizing: border-box;
+        }
+
+        .gif-title {
+         margin-left : 160px
+        }
+
+        .table-container {
+        width: 70%;
+        margin: 0px 80px;
+        text-align: center;
+        background-color: #eaeaea;
+        border: 1px solid #ccc;
+        padding: 10px;
+        }
+
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #14568f;
+            color: #14568f;
+        }
+    
+        th {
+            background-color: #14568f;
+            color: white;
+        }
+    
+        .button-container {
+        width: 50%;
+        }
+    
+        .visualization-menu {
+            position: fixed;
+            bottom: 20px;
+            right: 0px;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>    
+</head>
+
+<body>
+
+    <div style="display: flex; justify-content: center;">
+        <!-- Section GIF -->
+        <div class="gif-container">
+            <h2 class="gif-title">GIF 1 :</h2>
+            <img src="{{ url_for('static', filename=gif_path_1) }}">
+        </div>
+    
+        <div class="gif-container">
+            <h2 class="gif-title">GIF 2 :</h2>
+            <img src="{{ url_for('static', filename=gif_path_2) }}">
+        </div>
+    </div>
+
+    <!-- Section résultats -->
+    <div class="table-container">
+        <h2>Résultats :</h2>
+        <table>
+            <tr>
+                <th colspan="2">Main droite 1</th>
+                <th colspan="2">Pied droit 1</th>
+                <th colspan="2">Main droite 2</th>
+                <th colspan="2">Pied droit 2</th>
+            </tr>
+            <tr>
+                <td>Amplitude en x:</td>
+                <td>{{ amplitude_x_right_hand_1 }}</td>
+                <td>Amplitude en x:</td>
+                <td>{{ amplitude_x_right_foot_1 }}</td>
+                <td>Amplitude en x:</td>
+                <td>{{ amplitude_x_right_hand_2 }}</td>
+                <td>Amplitude en x:</td>
+                <td>{{ amplitude_x_right_foot_2 }}</td>
+            </tr>
+            <tr>
+                <td>Amplitude en y:</td>
+                <td>{{ amplitude_y_right_hand_1 }}</td>
+                <td>Amplitude en y:</td>
+                <td>{{ amplitude_y_right_foot_1 }}</td>
+                <td>Amplitude en y:</td>
+                <td>{{ amplitude_y_right_hand_2 }}</td>
+                <td>Amplitude en y:</td>
+                <td>{{ amplitude_y_right_foot_2 }}</td>
+            </tr>
+        </table>
+
+        <h2>Comparaisons:</h2>
+        <table>
+            <tr>
+                <th colspan="2">Ecart relatif d'amplitude sur la main droite</th>
+                <th colspan="2">Ecart relatif d'amplitude sur le pied droit</th>
+                <th colspan="1">Ecart relatif d'amplitude sur l'angle du bras</th>
+                <th colspan="1">Ecart relatif d'amplitude sur l'angle des genoux</th>
+            </tr>
+            <tr>
+                <td>En x:</td>
+                <td>{{ ecart_relatif_amplitude_x_right_hand }}</td>
+                <td>En x:</td>
+                <td>{{ ecart_relatif_amplitude_x_right_foot }}</td>
+                <td>{{ ecart_relatif_amplitude_angle_bras_droit}}</td>
+                <td>{{ ecart_relatif_amplitude_angle_genoux }}</td>
+            </tr>
+            <tr>
+                <td>En y:</td>
+                <td>{{ ecart_relatif_amplitude_y_right_hand }}</td>
+                <td>En y:</td>
+                <td>{{ ecart_relatif_amplitude_y_right_foot }}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!-- Section bouton de visualisation -->
+    <div class="button-container">
+        <div class="visualization-menu">
+            <label for="visualization-select">Visualisations :</label>
+            <select id="visualization-select" onchange="location = this.value;">
+                <option value="{{ url_for('static', filename=visualisation1_path) }}">Position relative des points clefs</option>
+                <option value="{{ url_for('static', filename=visualisation2_path) }}">Angle entre le bras droit et la hanche</option>
+                <option value="{{ url_for('static', filename=visualisation3_path) }}">Angle entre les deux genoux</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>

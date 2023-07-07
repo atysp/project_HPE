@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Résultats</title>
+    <style>
+        /* Styles CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+    
+        h2 {
+            margin-top: 20px;
+            color: #14568f;
+        }
+
+        .gif-container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 15px;
+            box-sizing: border-box;  
+        }
+
+        .table-container {
+            width: 50%;
+            margin-top: 20px auto;
+            text-align: center;
+            background-color: #eaeaea;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #14568f;
+            color: #14568f;
+        }
+    
+        th {
+            background-color: #14568f;
+            color: white;
+        }
+    
+        .button-container {
+        text-align: right;
+        margin-top: 20px;
+        width: 70%; /* Augmenter la largeur du conteneur */
+        margin-left: auto; /* Centrer le conteneur */
+        margin-right: auto; /* Centrer le conteneur */
+        }
+    
+        .visualization-button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #14568f;
+            color: white;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    
+        .visualization-menu {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    
+        .visualization-menu select {
+            padding: 5px;
+        }
+    </style>    
+</head>
+
+<body>
+
+    <div style="display: flex; justify-content: center;">
+        <!-- Section GIF -->
+        <div class="gif-container">
+            <h2>GIF 1 :</h2>
+            <img src="{{ url_for('static', filename=gif_path_1) }}">
+        </div>
+    
+        <div class="gif-container">
+            <h2>GIF 2 :</h2>
+            <img src="{{ url_for('static', filename=gif_path_2) }}">
+        </div>
+    </div>
+
+    <!-- Section résultats -->
+    <div class="table-container">
+        <h2>Résultats :</h2>
+        <table>
+            <tr>
+                <th colspan="2">Main droite</th>
+                <th colspan="2">Pied droit</th>
+            </tr>
+            <tr>
+                <td>Amplitude en x:</td>
+                <td>{{ amplitude_x_right_hand }}</td>
+                <td>Amplitude en x:</td>
+                <td>{{ amplitude_x_right_foot }}</td>
+            </tr>
+            <tr>
+                <td>Amplitude en y:</td>
+                <td>{{ amplitude_y_right_hand }}</td>
+                <td>Amplitude en y:</td>
+                <td>{{ amplitude_y_right_foot }}</td>
+            </tr>
+            <tr>
+                <th rowspan="2">Genoux</th>
+                <td colspan="2">Angle maximum:</td>
+                <td>{{ angle_max_genoux }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">Angle minimum:</td>
+                <td>{{ angle_min_genoux }}</td>
+            </tr>
+            <tr>
+                <th rowspan="2">Bras droit et hanche</th>
+                <td colspan="2">Angle maximum:</td>
+                <td>{{ angle_max_bras_droit }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">Angle minimum:</td>
+                <td>{{ angle_min_bras_droit }}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!-- Section bouton de visualisation -->
+    <div class="button-container">
+        <div class="visualization-menu">
+            <label for="visualization-select">Visualisations :</label>
+            <select id="visualization-select" onchange="location = this.value;">
+                <option value="{{ url_for('static', filename=visualisation1_path) }}">Première frame de la vidéo</option>
+                <option value="{{ url_for('static', filename=visualisation2_path) }}">Dernière frame de la vidéo</option>
+                <option value="{{ url_for('static', filename=visualisation3_path) }}">Visualisation du mouvement (keypoints)</option>
+                <option value="{{ url_for('static', filename=visualisation4_path) }}">Position des keypoints</option>
+                <option value="{{ url_for('static', filename=visualisation5_path) }}">Position des keypoints_rel</option>
+                <option value="{{ url_for('static', filename=visualisation6_path) }}">Vecteur vitesse</option>
+                <option value="{{ url_for('static', filename=visualisation7_path) }}">Angle entre le bras droit et la hanche</option>
+                <option value="{{ url_for('static', filename=visualisation8_path) }}">Angle entre les deux genoux</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,10 @@
+Flask==2.3.2
+imageio==2.31.1
+matplotlib==3.7.1
+moviepy==1.0.3
+numpy==1.24.3
+opencv_python==4.7.0.72
+opencv_python_headless==4.8.0.74
+Pillow==9.4.0
+Pillow==10.0.0
+scipy==1.11.1
