@@ -6,7 +6,9 @@ import pickle
 from PIL import Image
 import sys
 
-sys.path.append("/Users/atysp/projet_hpe/mmpose")
+chemin_script = os.path.abspath(__file__)
+chemin_script = os.path.dirname(os.path.dirname(os.path.dirname(chemin_script)))
+sys.path.append(f"{chemin_script}/mmpose")
 
 # Maintenant, vous pouvez importer le module `MMPoseInferencer`
 from mmpose.apis import MMPoseInferencer
@@ -780,16 +782,16 @@ def human_pose_estimation(video_path):
         return video_name
     nom = get_video_name(video_path)
     
-    # results  = perform_inference(video_frames, 16 , nom, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'https://download.openmmlab.com/mmpose/v1/projects/rtmpose/rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
-    with open(f'_results/{nom}/results1_video', 'rb') as f1:
-        results1 = pickle.load(f1)
-    with open(f'_results/{nom}/results2_video', 'rb') as f1:
-        results2 = pickle.load(f1)
-    with open(f'_results/{nom}/results3_video', 'rb') as f1:
-        results3 = pickle.load(f1)
-    with open(f'_results/{nom}/results4_video', 'rb') as f1:
-        results4 = pickle.load(f1) 
-    results = results1+results2+results3+results4
+    results  = perform_inference(video_frames, 16 , nom, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'https://download.openmmlab.com/mmpose/v1/projects/rtmpose/rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
+    # with open(f'_results/{nom}/results1_video', 'rb') as f1:
+    #     results1 = pickle.load(f1)
+    # with open(f'_results/{nom}/results2_video', 'rb') as f1:
+    #     results2 = pickle.load(f1)
+    # with open(f'_results/{nom}/results3_video', 'rb') as f1:
+    #     results3 = pickle.load(f1)
+    # with open(f'_results/{nom}/results4_video', 'rb') as f1:
+    #     results4 = pickle.load(f1) 
+    # results = results1+results2+results3+results4
     
     keypoints, normalized_keypoints, keypoints_rel = process_video_results(results)
 
