@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Human Pose Estimation</title>
+    <style>
+        /* Styles CSS pour le design amélioré */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            background-image: url("{{ url_for('static', filename='background.jpg') }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 50px;
+            text-align: center;
+            color: #14568f;
+            font-size: 36px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        label[for='video1'] {
+            display: block;
+            margin-bottom: 15px;
+            margin-top: 20px;
+            color: #14568f;
+            font-size: 24px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 15px;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        label[for='video2'] {
+            display: block;
+            margin-bottom: 15px;
+            margin-top: 20px;
+            color: #14568f;
+            font-size: 24px;
+        }
+
+        input[type="submit"] {
+            background-color: #14568f;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+</head>
+<body>
+    <h1>Human Pose Estimation</h1>
+    <form action="/process" method="POST" enctype="multipart/form-data">
+
+        <label for="video1">Sélectionnez votre première vidéo :</label>
+        <div class="video-upload">
+            <input type="file" id="video1" name="video1" accept="video/*" style="display: none;">
+            <button type="button" onclick="document.getElementById('video1').click()">Choisir une vidéo</button>
+            <span>ou</span>
+            <button type="button" onclick="openVideoTest()">Vidéo de Bolt</button>
+        </div>
+        <br>
+        <label for="video2">Sélectionnez votre deuxième vidéo (Optionnel) :</label>
+        <input type="file" id="video2" name="video2" accept="video/*">
+        <br>
+        <input type="submit" value="Analyser">
+    </form>
+
+    <script>
+        function openVideoTest() {
+            var videoUrl = "{{ url_for('static', filename='Bolt_cycle/video.mp4') }}";
+            var fileInput = document.getElementById('video1');
+
+            if (videoUrl !== "") {
+                fileInput.value = videoUrl;
+            } else {
+                alert("Vidéo test non définie.");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+    
+</body>
+</html>

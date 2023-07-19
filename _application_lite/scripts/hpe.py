@@ -755,7 +755,7 @@ def calculer_angle_bras_droit(keypoints, nom):
     ax.plot(temps, angles, "r:o")
     ax.set_xlabel('Numéro de la frame')
     ax.set_ylabel('Angle du bras (°)')
-    ax.set_title("Évolution de l\'angle entre l'avant bras droit et la hanche au fil du mouvement")
+    ax.set_title("Évolution de l\'angle entre l'avant bras droit et la hanche")
 
     # Afficher une grille de fond
     ax.grid(True, linestyle='--', alpha=0.5)
@@ -825,7 +825,7 @@ def main():
     repertoire_du_projet = os.path.dirname(os.path.dirname(os.path.dirname(chemin_du_script)))
     print(f"La fonction hpe est exectuée à l'emplacement : {repertoire_du_projet}")
 
-    video_path = f'{repertoire_du_projet}/_videos/Marathon_cycle.mp4'
+    video_path = f'{repertoire_du_projet}/_videos/Bolt_cycle.mp4'
     if os.path.exists(video_path):
         print(f'Le chemin de la vidéo est : {video_path}')
     
