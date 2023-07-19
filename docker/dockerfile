@@ -1,0 +1,52 @@
+# Utilisez l'image de base Ubuntu 20.04
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Mettre à jour et installer les dépendances nécessaires
+RUN apt-get update && \
+    apt-get install -y build-essential git python3 wget libglib2.0-0 libgl1
+
+# Installez Miniconda
+RUN wget -nv https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && \
+    bash miniconda.sh -b -p /opt/conda && \
+    rm miniconda.sh
+
+# Définissez les variables d'environnement pour l'utilisation de Miniconda
+ENV PATH="/opt/conda/bin:${PATH}"
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+# Mettez à jour Conda et installez Python
+RUN conda update -n base -c defaults conda && \
+    conda install -y python=3.8 && \
+    conda clean -afy
+
+# Installez PyTorch, torchvision et openmim
+RUN conda install -y pytorch torchvision cpuonly -c pytorch && \
+    pip install -U openmim
+
+# Installez mmcv, mmdet et les autres dépendances requises
+RUN mim install "mmcv>=2.0.1" && \
+    mim install "mmdet>=3.1.0" && \
+    mim install "mmengine"
+
+# Clonez le dépôt projet_hpe et installez les dépendances
+RUN git clone https://github.com/atysp/projet_hpe.git && \
+    cd projet_hpe && \
+    pip install -r requirements.txt
+
+WORKDIR /projet_hpe
+
+# Clonez le dépôt open-mmlab mmpose et installez les dépendances
+RUN git clone https://github.com/open-mmlab/mmpose.git && \
+    cd mmpose && \
+    pip install -r requirements.txt && \
+    pip install -v -e .
+
+# Informer Docker que le conteneur écoute sur les ports réseau 5000 au moment de l'exécution
+EXPOSE 5000
+
+ENV FLASK_APP=_application_lite/main.py
+
+# Utiliser la commande flask ou python -m flask pour lancer l'api
+CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
