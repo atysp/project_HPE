@@ -43,6 +43,8 @@ RUN git clone https://github.com/open-mmlab/mmpose.git && \
     pip install -r requirements.txt && \
     pip install -v -e .
 
+RUN 
+
 # Informer Docker que le conteneur écoute sur les ports réseau 5000 au moment de l'exécution
 EXPOSE 5000
 
