@@ -18,32 +18,32 @@ def comparaison(video_path_1, video_path_2):
     video_frames_1 = load_video_frames(video_path_1)
     nom_1 = get_video_name(video_path_1)
     
-    #results_1  = perform_inference(video_frames_1, 16 , nom_1, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'https://download.openmmlab.com/mmpose/v1/projects/rtmpose/rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
+    results_1  = perform_inference(video_frames_1, 16 , nom_1, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'https://download.openmmlab.com/mmpose/v1/projects/rtmpose/rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
 
-    with open(f'_results/{nom_1}/results1_video', 'rb') as f1:
-        results1 = pickle.load(f1)
-    with open(f'_results/{nom_1}/results2_video', 'rb') as f1:
-        results2 = pickle.load(f1)
-    with open(f'_results/{nom_1}/results3_video', 'rb') as f1:
-        results3 = pickle.load(f1)
-    with open(f'_results/{nom_1}/results4_video', 'rb') as f1:
-        results4 = pickle.load(f1) 
-    results_1 = results1+results2+results3+results4
+    # with open(f'_results/{nom_1}/results1_video', 'rb') as f1:
+    #     results1 = pickle.load(f1)
+    # with open(f'_results/{nom_1}/results2_video', 'rb') as f1:
+    #     results2 = pickle.load(f1)
+    # with open(f'_results/{nom_1}/results3_video', 'rb') as f1:
+    #     results3 = pickle.load(f1)
+    # with open(f'_results/{nom_1}/results4_video', 'rb') as f1:
+    #     results4 = pickle.load(f1) 
+    # results_1 = results1+results2+results3+results4
 
     video_frames_2 = load_video_frames(video_path_2)
     nom_2 = get_video_name(video_path_2)
 
-    #results_2  = perform_inference(video_frames_2, 16 , nom_2, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'https://download.openmmlab.com/mmpose/v1/projects/rtmpose/rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
+    results_2  = perform_inference(video_frames_2, 16 , nom_2, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'https://download.openmmlab.com/mmpose/v1/projects/rtmpose/rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
 
-    with open(f'_results/{nom_2}/results1_video', 'rb') as f1:
-        results1 = pickle.load(f1)
-    with open(f'_results/{nom_2}/results2_video', 'rb') as f1:
-        results2 = pickle.load(f1)
-    with open(f'_results/{nom_2}/results3_video', 'rb') as f1:
-        results3 = pickle.load(f1)
-    with open(f'_results/{nom_2}/results4_video', 'rb') as f1:
-        results4 = pickle.load(f1) 
-    results_2 = results1+results2+results3+results4
+    # with open(f'_results/{nom_2}/results1_video', 'rb') as f1:
+    #     results1 = pickle.load(f1)
+    # with open(f'_results/{nom_2}/results2_video', 'rb') as f1:
+    #     results2 = pickle.load(f1)
+    # with open(f'_results/{nom_2}/results3_video', 'rb') as f1:
+    #     results3 = pickle.load(f1)
+    # with open(f'_results/{nom_2}/results4_video', 'rb') as f1:
+    #     results4 = pickle.load(f1) 
+    # results_2 = results1+results2+results3+results4
 
     save_images_as_gif(results_1, nom_1)
     save_images_as_gif(results_2, nom_2)
