@@ -3,7 +3,7 @@ DELAY=5        # Délai (en secondes) entre chaque tentative
 
 # Fonction pour exécuter la commande et vérifier le code de sortie
 run_command() {
-    docker build -t projet_hpe:v1 .  # Remplacez "your_command_here" par la commande que vous souhaitez exécuter
+    docker build -t projet_hpe:latest .  # Remplacez "your_command_here" par la commande que vous souhaitez exécuter
 }
 
 attempt=1

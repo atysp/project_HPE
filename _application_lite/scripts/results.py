@@ -223,7 +223,7 @@ def human_pose_estimation(video_path):
 
     new_nb_frames = save_video_frames(video_frames, nom, new_nb_frames=16)
     
-    perform_and_save_inference(new_nb_frames, nom, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
+    perform_and_save_inference(new_nb_frames, nom, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'rtmpose-l_simcc-aic-coco_pt-aic-coco_420e-256x192-f016ffe0_20230126.pth')
 
     # results = load_results_inferencer(nom)
 

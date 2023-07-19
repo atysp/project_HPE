@@ -18,7 +18,7 @@ def comparaison(video_path_1, video_path_2):
     video_frames_1 = load_video_frames(video_path_1)
     nom_1 = get_video_name(video_path_1)
     
-    results_1  = perform_inference(video_frames_1, 16 , nom_1, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
+    results_1  = perform_inference(video_frames_1, 16 , nom_1, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'rtmxpose-l_simcc-aic-coco_pt-aic-coco_420e-256x192-f016ffe0_20230126.pth')
 
     # with open(f'_results/{nom_1}/results1_video', 'rb') as f1:
     #     results1 = pickle.load(f1)
@@ -33,7 +33,7 @@ def comparaison(video_path_1, video_path_2):
     video_frames_2 = load_video_frames(video_path_2)
     nom_2 = get_video_name(video_path_2)
 
-    results_2  = perform_inference(video_frames_2, 16 , nom_2, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
+    results_2  = perform_inference(video_frames_2, 16 , nom_2, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'rtmpose-l_simcc-aic-coco_pt-aic-coco_420e-256x192-f016ffe0_20230126.pth')
 
     # with open(f'_results/{nom_2}/results1_video', 'rb') as f1:
     #     results1 = pickle.load(f1)

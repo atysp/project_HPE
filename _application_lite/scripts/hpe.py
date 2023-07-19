@@ -777,7 +777,7 @@ def human_pose_estimation(video_path):
         return video_name
     nom = get_video_name(video_path)
     
-    results  = perform_inference(video_frames, 16 , nom, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
+    results  = perform_inference(video_frames, 16 , nom, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'rtmpose-l_simcc-aic-coco_pt-aic-coco_420e-256x192-f016ffe0_20230126.pth')
 
     ## Sans inférence
     # with open(f'_results/{nom}/results1_video', 'rb') as f1:
