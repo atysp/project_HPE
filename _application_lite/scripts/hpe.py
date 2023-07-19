@@ -769,11 +769,6 @@ def calculer_angle_bras_droit(keypoints, nom):
 
 def human_pose_estimation(video_path):
 
-    # chemin_script = os.path.abspath(__file__)
-    # repertoire_projet = os.path.dirname(os.path.dirname(os.path.dirname(chemin_script)))
-    # print(f"Le chemin absolu du projet est {repertoire_projet}")
-    # os.chdir(repertoire_projet)
-
     video_frames = load_video_frames(video_path)
 
     def get_video_name(video_path):
@@ -782,7 +777,9 @@ def human_pose_estimation(video_path):
         return video_name
     nom = get_video_name(video_path)
     
-    results  = perform_inference(video_frames, 16 , nom, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'https://download.openmmlab.com/mmpose/v1/projects/rtmpose/rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
+    results  = perform_inference(video_frames, 16 , nom, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
+
+    ## Sans inférence
     # with open(f'_results/{nom}/results1_video', 'rb') as f1:
     #     results1 = pickle.load(f1)
     # with open(f'_results/{nom}/results2_video', 'rb') as f1:

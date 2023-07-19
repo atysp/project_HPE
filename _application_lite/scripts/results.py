@@ -4,8 +4,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 from PIL import Image
-from mmpose.apis import MMPoseInferencer
 import sys
+
+chemin_script = os.path.abspath(__file__)
+chemin_script = os.path.dirname(os.path.dirname(os.path.dirname(chemin_script)))
+sys.path.append(f"{chemin_script}/mmpose")
+
+from mmpose.apis import MMPoseInferencer
 
 def load_video_frames(video_path):
     video = []
@@ -218,7 +223,7 @@ def human_pose_estimation(video_path):
 
     new_nb_frames = save_video_frames(video_frames, nom, new_nb_frames=16)
     
-    perform_and_save_inference(new_nb_frames, nom, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'https://download.openmmlab.com/mmpose/v1/projects/rtmpose/rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
+    perform_and_save_inference(new_nb_frames, nom, file = 'mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_aic-coco-256x192.py', download_checkpoints = 'rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth')
 
     # results = load_results_inferencer(nom)
 
@@ -233,17 +238,11 @@ def main():
     repertoire_du_projet = os.path.dirname(os.path.dirname(os.path.dirname(chemin_du_script)))
     print(f"La fonction results est exectuée à l'emplacement : {repertoire_du_projet}")
 
-    video_path = f'{repertoire_du_projet}/_videos/Marathon_cycle.mp4'
+    video_path = f'{repertoire_du_projet}/_videos/rugby3.mp4'
     if os.path.exists(video_path):
         print(f'Le chemin de la vidéo est : {video_path}')
 
     human_pose_estimation(video_path)
-
-    # # Récupération des coordonnées x et y de certains keypoints spécifiques
-    # x_right_hand = keypoints_lite_rel[:,10,0]
-    # y_right_hand = keypoints_lite_rel[:,10,1]
-    # x_right_foot = keypoints_lite_rel[:,16,0]
-    # y_right_foot = keypoints_lite_rel[:,16,1]
 
 if __name__ == '__main__':
     main()
