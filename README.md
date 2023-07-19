@@ -39,7 +39,7 @@ git clone https://github.com/atysp/projet_hpe.git
 cd projet_hpe
 pip install -r requirements.txt
 ```
-Étape 5. # Clonez le dépôt open-mmlab MMPose au sein du projet et installez les dépendances
+Étape 5. Clonez le dépôt open-mmlab MMPose au sein du projet et installez les dépendances
 
 ```bash
 git clone https://github.com/open-mmlab/mmpose.git
@@ -64,6 +64,7 @@ td-hm_hrnet-w48_8xb32-210e_coco-256x192-0e67c616_20220913.pth \
 --device cpu
 ls
 ```
+Normalement, un fichier nommé "vis_results.jpg" doit être présent dans le répertoire.
 
 Vous pouvez ensuite tester le script python
 "_application_lite/scripts/hpe.py" qui effectue l'inférence sur la vidéo choisie.
