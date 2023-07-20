@@ -22,9 +22,9 @@ RUN conda update -n base -c defaults conda && \
     conda clean -afy
 
 # Installez PyTorch, torchvision et openmim
-RUN conda install -y torchvision -c pytorch
 RUN conda install -y cpuonly -c pytorch
 RUN conda install -y pytorch -c pytorch
+RUN conda install -y torchvision -c pytorch
 
 RUN pip install -U openmim
 
